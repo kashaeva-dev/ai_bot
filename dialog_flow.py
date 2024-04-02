@@ -1,4 +1,5 @@
 from google.cloud import dialogflow
+import json
 
 
 def detect_intent_texts(project_id, session_id, text, language_code):
@@ -39,5 +40,38 @@ def get_df_answer(project_id, session_id, text, language_code):
 
     return response.query_result.fulfillment_text
 
-if __name__ == 'main':
-    detect_intent_texts("ai-devman-bot", "123456789", "Тук-тук", "ru")
+
+def create_intent(project_id, display_name, training_phrases_parts, message_texts):
+    intents_client = dialogflow.IntentsClient()
+
+    parent = dialogflow.AgentsClient.agent_path(project_id)
+    training_phrases = []
+    for training_phrases_part in training_phrases_parts:
+        part = dialogflow.Intent.TrainingPhrase.Part(text=training_phrases_part)
+        # Here we create a new training phrase for each provided part.
+        training_phrase = dialogflow.Intent.TrainingPhrase(parts=[part])
+        training_phrases.append(training_phrase)
+
+    text = dialogflow.Intent.Message.Text(text=message_texts)
+    message = dialogflow.Intent.Message(text=text)
+
+    intent = dialogflow.Intent(
+        display_name=display_name, training_phrases=training_phrases, messages=[message]
+    )
+
+    response = intents_client.create_intent(
+        request={"parent": parent, "intent": intent}
+    )
+
+    print("Intent created: {}".format(response))
+
+
+if __name__ == '__main__':
+    with open('intents.json', 'r') as intents_file:
+        intents = intents_file.read()
+
+    intents = json.loads(intents)
+
+    for intent_header, intent_body in intents.items():
+        create_intent('ai-devman-bot', intent_header, intent_body['questions'], [intent_body['answer']])
+
