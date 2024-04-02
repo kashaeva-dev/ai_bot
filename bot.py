@@ -2,6 +2,7 @@ import logging
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, CallbackContext
 from telegram import Update
 from environs import Env
+from dialog_flow import get_df_answer
 
 
 logging.basicConfig(
@@ -20,7 +21,11 @@ def start(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Здравствуйте!")
 
 def echo(update: Update, context: CallbackContext):
-    context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
+    answer = get_df_answer('ai-devman-bot',
+                           update.effective_chat.id,
+                           text=update.message.text,
+                           language_code='ru')
+    context.bot.send_message(chat_id=update.effective_chat.id, text=answer)
 
 start_handler = CommandHandler('start', start)
 message_handler = MessageHandler(Filters.text & (~Filters.command), echo)
