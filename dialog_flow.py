@@ -38,7 +38,7 @@ def get_df_answer(project_id, session_id, text, language_code):
         request={"session": session, "query_input": query_input}
     )
 
-    return response.query_result.fulfillment_text
+    return response.query_result
 
 
 def create_intent(project_id, display_name, training_phrases_parts, message_texts):
