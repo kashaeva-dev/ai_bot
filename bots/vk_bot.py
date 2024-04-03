@@ -1,11 +1,12 @@
 import random
+
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
-from environs import Env
-from dialog_flow import get_df_answer
+
+from dialog_flow.dialog_flow import get_df_answer
 
 
-def echo(event, vk_session_api):
+def answer(event, vk_session_api):
     df_query_result = get_df_answer('ai-devman-bot',
                                 event.user_id,
                                 text=event.text,
@@ -18,11 +19,9 @@ def echo(event, vk_session_api):
         )
 
 
-if __name__ == "__main__":
-    env = Env()
-    env.read_env()
-
-    vk_session = vk_api.VkApi(token=env('VK_API_TOKEN'))
+def start_vk_bot(token, logger):
+    logger.info('Start vk bot')
+    vk_session = vk_api.VkApi(token=token)
 
     longpoll = VkLongPoll(vk_session)
 
@@ -30,4 +29,4 @@ if __name__ == "__main__":
 
     for event in longpoll.listen():
         if event.type == VkEventType.MESSAGE_NEW and event.to_me:
-            echo(event, vk_session_api)
+            answer(event, vk_session_api)
