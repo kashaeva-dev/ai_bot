@@ -165,10 +165,10 @@ providing them with the necessary information as configured in your DialogFlow a
 
 You can try example bots:
 
-**TG BOT**:
+**TELEGRAM BOT**:
 
 User iteraction with the test bot is look like:
-
+![TelegramBot.gif](TelegramBot.gif)
 
 **VK BOT**:
 
