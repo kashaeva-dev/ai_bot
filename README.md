@@ -167,14 +167,14 @@ You can try example bots:
 
 **TELEGRAM BOT**:
 
-t.me/ai_nat_bot
+[Telegram Bot with DialogFlow](https://t.me/ai_nat_bot)
 
 User iteraction with the test telegram bot is look like:
 ![TelegramBot_2.gif](TelegramBot_2.gif)
 
 **VK BOT**:
 
-https://vk.com/club225378973
+[VK Bot with DialogFlow](https://vk.com/club225378973)
 
 User iteraction with the test vk bot is look like:
 ![VKBot.gif](VKBot.gif)
