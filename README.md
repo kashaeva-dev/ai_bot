@@ -168,7 +168,7 @@ You can try example bots:
 **TELEGRAM BOT**:
 
 User iteraction with the test bot is look like:
-![TelegramBot.gif](TelegramBot.gif)
+![TelegramBot_2.gif](TelegramBot_2.gif)
 
 **VK BOT**:
 
