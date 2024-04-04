@@ -167,9 +167,14 @@ You can try example bots:
 
 **TELEGRAM BOT**:
 
-User iteraction with the test bot is look like:
+t.me/ai_nat_bot
+
+User iteraction with the test telegram bot is look like:
 ![TelegramBot_2.gif](TelegramBot_2.gif)
 
 **VK BOT**:
 
-User iteraction with the test bot is look like:
+https://vk.com/club225378973
+
+User iteraction with the test vk bot is look like:
+![VKBot.gif](VKBot.gif)
