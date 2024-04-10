@@ -1,10 +1,6 @@
+from environs import Env
 from google.cloud import api_keys_v2
 from google.cloud.api_keys_v2 import Key
-from environs import Env
-
-
-env = Env()
-env.read_env()
 
 
 def create_api_key(project_id: str, suffix: str) -> Key:
@@ -42,4 +38,8 @@ def create_api_key(project_id: str, suffix: str) -> Key:
     return response
 
 
-response = create_api_key('ai-devman-bot', 'dvmn')
+if __name__ == "__main__":
+    env = Env()
+    env.read_env()
+
+    response = create_api_key(env('DF_PROJECT_ID'), 'dvmn')

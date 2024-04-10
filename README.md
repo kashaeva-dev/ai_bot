@@ -146,8 +146,13 @@ To upload and process the intents from your JSON file, execute the following com
 python dialog_flow/dialog_flow.py
 ```
 
-This script reads the `intents.json` file and uploads its contents to your DialogFlow agent, allowing the agent to learn and recognize these intents.
+By default, this script reads the `intents.json` file in the project's root directory and uploads its contents to your DialogFlow agent, allowing the agent to learn and recognize these intents.
+Or you can spesify path to your own JSON file when starting the `dialog_flow/dialog_flow.py` script:
 
+```commandline
+python dialog_flow/dialog_flow.py <path_to_your_json_file>
+```
+Specifying path to your json file is optional. By default, the path is `../intents.json`.
 After uploading, you can fine-tune your intents manually on the [DialogFlow website](https://dialogflow.cloud.google.com/#/getStarted) under the Intents section to ensure they align perfectly with your desired user interactions.
 
 ## Usage
@@ -160,6 +165,13 @@ python main.py
 
 This script initiates two bots that are now equipped to interact with users,
 providing them with the necessary information as configured in your DialogFlow agent.
+
+You can run as well only telegram bot with the help of `--only_tg` argument or only vk bot by specifying the `--only_vk` argument.
+
+For exemple:
+```commandline
+python main.py --only_tg
+```
 
 ## Examples
 
